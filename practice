@@ -17,4 +17,7 @@ def mavenhome= tool name:'maven3.6.3'
    stage('deploy tomcat'){
        deploy adapters: [tomcat9(credentialsId: 'afc1781a-8ebc-434f-82d4-f414964dafee', path: '', url: 'http://65.1.107.26:9900/')], contextPath: '/yokanth', war: 'target/*.war'
    }
+   stage('send email'){
+    emailext body: 'fresher ', recipientProviders: [developers()], subject: 'devops', to: 'yokanthreddy5@gmail.com'
+    }
 }
